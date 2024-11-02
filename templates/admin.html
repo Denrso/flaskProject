@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Admin Panel</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.name.label(class="form-control-label") }}
+            {{ form.name(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.price.label(class="form-control-label") }}
+            {{ form.price(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.description.label(class="form-control-label") }}
+            {{ form.description(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-success") }}
+        </div>
+    </form>
+
+    <h3>Existing Products</h3>
+    <ul class="list-group">
+        {% for product in products %}
+            <li class="list-group-item">
+                {{ product.name }} - ${{ product.price }}
+                <form method="POST" action="{{ url_for('delete_product', product_id=product.id) }}">
+            {{ delete_form.hidden_tag() }}
+{#            {{ delete_form.confirm(class="btn btn-danger") }}#}
+                  <button class="btn btn-danger btn-sm float-right">Delete</button>
+        </form>
+
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
