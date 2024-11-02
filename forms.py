@@ -7,18 +7,18 @@ class RegistrationForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
-    submit = SubmitField('Sign Up')
+    submit = SubmitField('регистрация')
 
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
-    submit = SubmitField('Login')
+    submit = SubmitField('войти')
 
 class ProductForm(FlaskForm):
     name = StringField('Product Name', validators=[DataRequired()])
     price = FloatField('Price', validators=[DataRequired()])
     description = TextAreaField('Description', validators=[DataRequired()])
-    submit = SubmitField('Add Product')
+    submit = SubmitField('добавить товар')
 
 # Форма подтверждения удаления
 class DeleteForm(FlaskForm):
